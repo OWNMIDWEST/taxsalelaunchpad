@@ -362,17 +362,17 @@ html{scroll-behavior:smooth}
 /* ============ EDIT THESE ============ */
 const CONFIG = {
   email: "joe@ownmidwest.com",
-  phone: "",                 // add the new Google Voice number, e.g. "864-555-0100" (blank = hidden)
-  bidbridgeUrl: "",          // BidBridge website, e.g. "https://bidbridge.com" (blank = goes to form)
-  databaseUrl: "",           // Subscriber sign-in page for the county database (blank = hidden)
-  formEndpoint: ""           // Form service URL, e.g. "https://formspree.io/f/xxxxxxx" (blank = fallback)
+  phone: "864-747-0482",                 // add the new Google Voice number, e.g. "864-555-0100" (blank = hidden)
+  bidbridgeUrl: "https://trackyourlien.com",          // BidBridge website, e.g. "https://bidbridge.com" (blank = goes to form)
+  databaseUrl: "https://data.ownmidwest.com",           // Subscriber sign-in page for the county database (blank = hidden)
+  formEndpoint: "https://formspree.io/f/mqpabypd"           // Form service URL, e.g. "https://formspree.io/f/xxxxxxx" (blank = fallback)
 };
 /* ==================================== */
 
 (function(){
   const $ = s => document.querySelector(s);
-  $("#c-email").textContent = CONFIG.email;
-  if (CONFIG.phone) $("#c-phone").textContent = CONFIG.phone; else $("#phone-row").hidden = true;
+  $("#c-email").innerHTML = '<a href="mailto:'+CONFIG.email+'">'+CONFIG.email+'</a>';
+  if (CONFIG.phone) $("#c-phone").innerHTML = '<a href="tel:+1'+CONFIG.phone.replace(/\D/g,"")+'">'+CONFIG.phone+'</a>'; else $("#phone-row").hidden = true;
 
   // Direct links vs. form
   document.querySelectorAll("[data-link]").forEach(a => {
