@@ -11,8 +11,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 :root{
-  --ground:#F3F5F2; --surface:#FFFFFF; --ink:#14232E; --muted:#56646B; --line:#D5DCD7;
-  --deep:#0F3B3A; --deep-ink:#E8F0EC; --accent:#C9791C; --accent-ink:#FFFFFF; --accent-soft:#F6E7D3;
+  --ground:#F4F6F9; --surface:#FFFFFF; --ink:#15202E; --muted:#556070; --line:#D8DEE6;
+  --deep:#1E3F6E; --deep-ink:#EEF3F9; --accent:#4A8516; --accent-ink:#FFFFFF; --accent-soft:#E6F1D8; --accent-bright:#8CC63F;
   --ok:#2E7A4F; --warn:#B4531A;
   --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
   --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
@@ -20,12 +20,12 @@
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --ground:#0E1719; --surface:#152226; --ink:#E6ECE9; --muted:#9AAAA6; --line:#26363A;
-  --deep:#0A2A29; --deep-ink:#DCE8E3; --accent:#E3953A; --accent-ink:#1A1206; --accent-soft:#3A2A16;
+  --ground:#0E1622; --surface:#152131; --ink:#E6ECF3; --muted:#9AA8B8; --line:#26354A;
+  --deep:#0F2544; --deep-ink:#E3EAF3; --accent:#8CC63F; --accent-ink:#0E1622; --accent-soft:#1F3318; --accent-bright:#9BD150;
   --ok:#5FB585; --warn:#E08A52; color-scheme:dark;}}
 :root[data-theme="dark"]{
-  --ground:#0E1719; --surface:#152226; --ink:#E6ECE9; --muted:#9AAAA6; --line:#26363A;
-  --deep:#0A2A29; --deep-ink:#DCE8E3; --accent:#E3953A; --accent-ink:#1A1206; --accent-soft:#3A2A16;
+  --ground:#0E1622; --surface:#152131; --ink:#E6ECF3; --muted:#9AA8B8; --line:#26354A;
+  --deep:#0F2544; --deep-ink:#E3EAF3; --accent:#8CC63F; --accent-ink:#0E1622; --accent-soft:#1F3318; --accent-bright:#9BD150;
   --ok:#5FB585; --warn:#E08A52; color-scheme:dark;}
 
 *{box-sizing:border-box}
@@ -49,12 +49,12 @@ h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.02;text-wrap:b
 .brand{font:600 14px/1.2 var(--mono);letter-spacing:.08em;text-transform:uppercase}
 .brand small{display:block;opacity:.65;font-weight:400;letter-spacing:.04em;text-transform:none}
 .hero h1{font-size:clamp(42px,7vw,80px);max-width:17ch}
-.hero h1 em{font-style:normal;color:var(--accent)}
+.hero h1 em{font-style:normal;color:var(--accent-bright)}
 .hero p.lede{font-size:clamp(17px,2vw,20px);max-width:56ch;margin:20px 0 28px;opacity:.9}
 .hero .actions{display:flex;gap:12px;flex-wrap:wrap}
 .hero .btn-ghost{color:var(--deep-ink)}
-.ticket{margin-top:40px;display:inline-grid;grid-template-columns:auto auto;gap:4px 18px;font:400 13px/1.5 var(--mono);border:1px dashed rgba(232,240,236,.35);padding:12px 16px;border-radius:4px;max-width:100%}
-.ticket b{font-weight:500;color:var(--accent)}
+.ticket{margin-top:40px;display:inline-grid;grid-template-columns:auto auto;gap:4px 18px;font:400 13px/1.5 var(--mono);border:1px dashed rgba(238,243,249,.35);padding:12px 16px;border-radius:4px;max-width:100%}
+.ticket b{font-weight:500;color:var(--accent-bright)}
 
 /* CYCLE NAV */
 .cycle{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--line);background:var(--surface)}
@@ -118,6 +118,13 @@ section.stage{padding-block:64px;border-bottom:1px solid var(--line)}
 .county-side p{margin:0;max-width:62ch}
 .county-side .btn-ghost{color:var(--ink)}
 
+.hero-note{margin:14px 0 0;font-size:13px;opacity:.72;max-width:60ch}
+.county-line{border-top:1px solid var(--line);background:var(--surface)}
+.county-line .wrap{display:flex;justify-content:space-between;align-items:center;gap:8px 24px;flex-wrap:wrap;padding-block:18px;font-size:14px;color:var(--muted)}
+.county-line p{margin:0;max-width:75ch}
+.county-line b{color:var(--ink)}
+.county-line a{color:var(--accent);font-weight:600;text-decoration:none;white-space:nowrap}
+.county-line a:hover{text-decoration:underline}
 /* CONTACT */
 .contact{padding-block:64px}
 .contact-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:40px}
@@ -168,13 +175,14 @@ html{scroll-behavior:smooth}
       <div class="brand">Tax Sale Toolkit<small>by PTI Services Inc. · South Carolina property data</small></div>
       <a class="btn btn-ghost" href="#contact" style="padding:10px 14px;font-size:14px">Talk to Joe</a>
     </div>
-    <p class="eyebrow" style="color:var(--accent);margin:0 0 14px">Launching Fall 2026 · 11 SC counties</p>
+    <p class="eyebrow" style="color:var(--accent-bright);margin:0 0 14px">Launching Fall 2026 · 11 SC counties</p>
     <h1>Every parcel in the county. Every record that matters. <em>One place.</em></h1>
     <p class="lede">Owner, mailing address, value, tax status, delinquency and deed history for every parcel, linked straight to the county's own records. Add owner outreach, tax sale lists, full auction results and bid tracking through redemption, all built for investors buying across South Carolina.</p>
     <div class="actions">
       <a class="btn btn-primary" href="#contact">Request access</a>
       <a class="btn btn-ghost" href="#database">See what's in the database</a>
     </div>
+    <p class="hero-note">Built to speed up your research, not replace due diligence. Always confirm with the county before you bid.</p>
     <div class="ticket" aria-label="Example parcel record">
       <span>Example · TMS 0544.02-01-018.00</span><span>Greenville</span>
       <span>Owner / tax status</span><b>Sample Owner LLC · delinquent 3 of last 5 yrs</b>
@@ -291,17 +299,6 @@ html{scroll-behavior:smooth}
     </div>
   </section>
 
-  <section class="county-side" id="county">
-    <div class="wrap">
-      <div>
-        <p class="eyebrow">For treasurers &amp; delinquent tax offices</p>
-        <h2>One place for bidder questions.</h2>
-        <p>Opt-in counties get a county-side version of BidBridge, so bidder communication runs through one place instead of a phone call or email for every parcel. Free for counties.</p>
-      </div>
-      <a class="btn btn-ghost" href="#contact" data-pick="county" data-role="county">Set up my county</a>
-    </div>
-  </section>
-
   <section class="contact" id="contact">
     <div class="wrap contact-grid">
       <div>
@@ -349,12 +346,18 @@ html{scroll-behavior:smooth}
       </form>
     </div>
   </section>
+  <aside class="county-line" id="county" aria-label="For county offices">
+    <div class="wrap">
+      <p><b>Work in a county treasurer or delinquent tax office?</b> BidBridge has a free county-side version that puts bidder questions in one place.</p>
+      <a href="#contact" data-pick="county" data-role="county">Set up my county →</a>
+    </div>
+  </aside>
 </main>
 
 <footer>
   <div class="wrap">
     <span>© 2026 PTI Services Inc. · 3620 Pelham Rd, Suite 61, Greenville SC 29615</span>
-    <span>Independent research service — not affiliated with any county government. This site uses Google Analytics and Microsoft Clarity to understand visits (approximate location, time, pages and clicks).</span>
+    <span>Independent research service, not affiliated with any county government. Data is compiled from public county records and may contain errors or delays; verify all information with the county before bidding. Not legal, tax or investment advice. This site uses analytics to understand visits (approximate location, time, pages and clicks).</span>
   </div>
 </footer>
 
@@ -478,7 +481,7 @@ const CONFIG = {
   function draw(){
     const w = c.clientWidth, h = c.clientHeight, dpr = window.devicePixelRatio||1;
     c.width = w*dpr; c.height = h*dpr; ctx.scale(dpr,dpr);
-    ctx.strokeStyle = "rgba(232,240,236,.5)"; ctx.lineWidth = 1;
+    ctx.strokeStyle = "rgba(238,243,249,.5)"; ctx.lineWidth = 1;
     let seed = 7; const rnd = () => (seed = (seed*9301+49297)%233280)/233280;
     function split(x,y,cw,ch,d){
       if (d>5 || cw<50 || ch<40){ ctx.strokeRect(x+.5,y+.5,cw,ch); return; }
@@ -486,7 +489,7 @@ const CONFIG = {
       else { const s=ch*(.3+rnd()*.4); split(x,y,cw,s,d+1); split(x,y+s,cw,ch-s,d+1); }
     }
     ctx.save(); ctx.translate(w*.45,-40); ctx.rotate(-.12); split(0,0,w*.75,h+160,0); ctx.restore();
-    ctx.strokeStyle = "rgba(201,121,28,.9)"; ctx.lineWidth = 2;
+    ctx.strokeStyle = "rgba(140,198,63,.9)"; ctx.lineWidth = 2;
     ctx.save(); ctx.translate(w*.45,-40); ctx.rotate(-.12); ctx.strokeRect(w*.28,h*.42,70,54); ctx.restore();
   }
   draw(); addEventListener("resize", () => { ctx.setTransform(1,0,0,1,0,0); draw(); });
