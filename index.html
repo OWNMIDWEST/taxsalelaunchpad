@@ -12,7 +12,7 @@
 <style>
 :root{
   --ground:#F4F6F9; --surface:#FFFFFF; --ink:#15202E; --muted:#556070; --line:#D8DEE6;
-  --deep:#1E3F6E; --deep-ink:#EEF3F9; --accent:#4A8516; --accent-ink:#FFFFFF; --accent-soft:#E6F1D8; --accent-bright:#8CC63F;
+  --deep:#1E3F6E; --deep-ink:#EEF3F9; --accent:#4A8516; --accent-ink:#FFFFFF; --accent-soft:#E6F1D8; --accent-bright:#8CC63F; --live-bg:#E9F4DC; --live-line:#A9CF7E; --live-on:#CFE6B3;
   --ok:#2E7A4F; --warn:#B4531A;
   --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
   --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
@@ -21,11 +21,11 @@
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --ground:#0E1622; --surface:#152131; --ink:#E6ECF3; --muted:#9AA8B8; --line:#26354A;
-  --deep:#0F2544; --deep-ink:#E3EAF3; --accent:#8CC63F; --accent-ink:#0E1622; --accent-soft:#1F3318; --accent-bright:#9BD150;
+  --deep:#0F2544; --deep-ink:#E3EAF3; --accent:#8CC63F; --accent-ink:#0E1622; --accent-soft:#1F3318; --accent-bright:#9BD150; --live-bg:#1E3319; --live-line:#3F6A2A; --live-on:#2C4A20;
   --ok:#5FB585; --warn:#E08A52; color-scheme:dark;}}
 :root[data-theme="dark"]{
   --ground:#0E1622; --surface:#152131; --ink:#E6ECF3; --muted:#9AA8B8; --line:#26354A;
-  --deep:#0F2544; --deep-ink:#E3EAF3; --accent:#8CC63F; --accent-ink:#0E1622; --accent-soft:#1F3318; --accent-bright:#9BD150;
+  --deep:#0F2544; --deep-ink:#E3EAF3; --accent:#8CC63F; --accent-ink:#0E1622; --accent-soft:#1F3318; --accent-bright:#9BD150; --live-bg:#1E3319; --live-line:#3F6A2A; --live-on:#2C4A20;
   --ok:#5FB585; --warn:#E08A52; color-scheme:dark;}
 
 *{box-sizing:border-box}
@@ -129,13 +129,13 @@ section.stage{padding-block:64px;border-bottom:1px solid var(--line)}
 .legend-note{font-weight:400;color:var(--muted);font-size:13px}
 .cty-tools{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;font-size:13px}
 .cty-key{display:inline-flex;align-items:center;gap:6px;color:var(--muted)}
-.cty-key i,.cty.live::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);display:inline-block}
+.cty-key i{width:14px;height:14px;border-radius:3px;background:var(--live-bg);border:1px solid var(--live-line);display:inline-block}
 .linkbtn{background:none;border:0;padding:0;color:var(--accent);font:600 13px var(--body);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
 .cty-count{margin-left:auto;color:var(--muted);font-variant-numeric:tabular-nums}
 .cty-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:6px;max-height:280px;overflow-y:auto;padding:8px;border:1px solid var(--line);border-radius:6px;background:var(--ground)}
 .cty{display:flex;align-items:center;gap:7px;font-size:13.5px;padding:6px 8px;border:1px solid var(--line);border-radius:4px;background:var(--surface);cursor:pointer}
-.cty.live::after{margin-left:auto}
-.cty:has(input:checked){border-color:var(--accent);background:var(--accent-soft)}
+.cty.live{background:var(--live-bg);border-color:var(--live-line);font-weight:500}
+.cty:has(input:checked){border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);background:var(--live-on);font-weight:600}
 .cty input{accent-color:var(--accent);margin:0}
 /* CONTACT */
 .contact{padding-block:64px}
@@ -354,7 +354,7 @@ html{scroll-behavior:smooth}
         <fieldset class="counties-pick">
           <legend>Counties you buy in or want covered <span class="legend-note">(pick as many as you like)</span></legend>
           <div class="cty-tools">
-            <span class="cty-key"><i></i>Live at launch</span>
+            <span class="cty-key"><i></i>Green = live at launch</span>
             <button type="button" class="linkbtn" data-cty="live">Select launch counties</button>
             <button type="button" class="linkbtn" data-cty="all">Select all 46</button>
             <button type="button" class="linkbtn" data-cty="none">Clear</button>
