@@ -125,6 +125,18 @@ section.stage{padding-block:64px;border-bottom:1px solid var(--line)}
 .county-line b{color:var(--ink)}
 .county-line a{color:var(--accent);font-weight:600;text-decoration:none;white-space:nowrap}
 .county-line a:hover{text-decoration:underline}
+.counties-pick{display:grid;gap:10px}
+.legend-note{font-weight:400;color:var(--muted);font-size:13px}
+.cty-tools{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;font-size:13px}
+.cty-key{display:inline-flex;align-items:center;gap:6px;color:var(--muted)}
+.cty-key i,.cty.live::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);display:inline-block}
+.linkbtn{background:none;border:0;padding:0;color:var(--accent);font:600 13px var(--body);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.cty-count{margin-left:auto;color:var(--muted);font-variant-numeric:tabular-nums}
+.cty-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:6px;max-height:280px;overflow-y:auto;padding:8px;border:1px solid var(--line);border-radius:6px;background:var(--ground)}
+.cty{display:flex;align-items:center;gap:7px;font-size:13.5px;padding:6px 8px;border:1px solid var(--line);border-radius:4px;background:var(--surface);cursor:pointer}
+.cty.live::after{margin-left:auto}
+.cty:has(input:checked){border-color:var(--accent);background:var(--accent-soft)}
+.cty input{accent-color:var(--accent);margin:0}
 /* CONTACT */
 .contact{padding-block:64px}
 .contact-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:40px}
@@ -339,7 +351,65 @@ html{scroll-behavior:smooth}
             <label><input type="checkbox" name="interest" value="county" id="i-county">County-side BidBridge</label>
           </div>
         </fieldset>
-        <label class="f" for="f-counties">Counties you buy in (or want covered)<input id="f-counties" name="counties" type="text" placeholder="e.g. Greenville, Spartanburg, Anderson"></label>
+        <fieldset class="counties-pick">
+          <legend>Counties you buy in or want covered <span class="legend-note">(pick as many as you like)</span></legend>
+          <div class="cty-tools">
+            <span class="cty-key"><i></i>Live at launch</span>
+            <button type="button" class="linkbtn" data-cty="live">Select launch counties</button>
+            <button type="button" class="linkbtn" data-cty="all">Select all 46</button>
+            <button type="button" class="linkbtn" data-cty="none">Clear</button>
+            <span class="cty-count" id="cty-count" aria-live="polite">0 selected</span>
+          </div>
+          <div class="cty-grid">
+            <label class="cty"><input type="checkbox" name="counties" value="Abbeville" id="c-abbeville">Abbeville</label>
+            <label class="cty live"><input type="checkbox" name="counties" value="Aiken" id="c-aiken">Aiken</label>
+            <label class="cty"><input type="checkbox" name="counties" value="Allendale" id="c-allendale">Allendale</label>
+            <label class="cty live"><input type="checkbox" name="counties" value="Anderson" id="c-anderson">Anderson</label>
+            <label class="cty"><input type="checkbox" name="counties" value="Bamberg" id="c-bamberg">Bamberg</label>
+            <label class="cty"><input type="checkbox" name="counties" value="Barnwell" id="c-barnwell">Barnwell</label>
+            <label class="cty"><input type="checkbox" name="counties" value="Beaufort" id="c-beaufort">Beaufort</label>
+            <label class="cty"><input type="checkbox" name="counties" value="Berkeley" id="c-berkeley">Berkeley</label>
+            <label class="cty"><input type="checkbox" name="counties" value="Calhoun" id="c-calhoun">Calhoun</label>
+            <label class="cty live"><input type="checkbox" name="counties" value="Charleston" id="c-charleston">Charleston</label>
+            <label class="cty live"><input type="checkbox" name="counties" value="Cherokee" id="c-cherokee">Cherokee</label>
+            <label class="cty"><input type="checkbox" name="counties" value="Chester" id="c-chester">Chester</label>
+            <label class="cty"><input type="checkbox" name="counties" value="Chesterfield" id="c-chesterfield">Chesterfield</label>
+            <label class="cty"><input type="checkbox" name="counties" value="Clarendon" id="c-clarendon">Clarendon</label>
+            <label class="cty"><input type="checkbox" name="counties" value="Colleton" id="c-colleton">Colleton</label>
+            <label class="cty"><input type="checkbox" name="counties" value="Darlington" id="c-darlington">Darlington</label>
+            <label class="cty"><input type="checkbox" name="counties" value="Dillon" id="c-dillon">Dillon</label>
+            <label class="cty"><input type="checkbox" name="counties" value="Dorchester" id="c-dorchester">Dorchester</label>
+            <label class="cty"><input type="checkbox" name="counties" value="Edgefield" id="c-edgefield">Edgefield</label>
+            <label class="cty"><input type="checkbox" name="counties" value="Fairfield" id="c-fairfield">Fairfield</label>
+            <label class="cty"><input type="checkbox" name="counties" value="Florence" id="c-florence">Florence</label>
+            <label class="cty"><input type="checkbox" name="counties" value="Georgetown" id="c-georgetown">Georgetown</label>
+            <label class="cty live"><input type="checkbox" name="counties" value="Greenville" id="c-greenville">Greenville</label>
+            <label class="cty"><input type="checkbox" name="counties" value="Greenwood" id="c-greenwood">Greenwood</label>
+            <label class="cty"><input type="checkbox" name="counties" value="Hampton" id="c-hampton">Hampton</label>
+            <label class="cty"><input type="checkbox" name="counties" value="Horry" id="c-horry">Horry</label>
+            <label class="cty"><input type="checkbox" name="counties" value="Jasper" id="c-jasper">Jasper</label>
+            <label class="cty"><input type="checkbox" name="counties" value="Kershaw" id="c-kershaw">Kershaw</label>
+            <label class="cty"><input type="checkbox" name="counties" value="Lancaster" id="c-lancaster">Lancaster</label>
+            <label class="cty"><input type="checkbox" name="counties" value="Laurens" id="c-laurens">Laurens</label>
+            <label class="cty"><input type="checkbox" name="counties" value="Lee" id="c-lee">Lee</label>
+            <label class="cty live"><input type="checkbox" name="counties" value="Lexington" id="c-lexington">Lexington</label>
+            <label class="cty"><input type="checkbox" name="counties" value="McCormick" id="c-mccormick">McCormick</label>
+            <label class="cty"><input type="checkbox" name="counties" value="Marion" id="c-marion">Marion</label>
+            <label class="cty"><input type="checkbox" name="counties" value="Marlboro" id="c-marlboro">Marlboro</label>
+            <label class="cty"><input type="checkbox" name="counties" value="Newberry" id="c-newberry">Newberry</label>
+            <label class="cty live"><input type="checkbox" name="counties" value="Oconee" id="c-oconee">Oconee</label>
+            <label class="cty"><input type="checkbox" name="counties" value="Orangeburg" id="c-orangeburg">Orangeburg</label>
+            <label class="cty live"><input type="checkbox" name="counties" value="Pickens" id="c-pickens">Pickens</label>
+            <label class="cty live"><input type="checkbox" name="counties" value="Richland" id="c-richland">Richland</label>
+            <label class="cty"><input type="checkbox" name="counties" value="Saluda" id="c-saluda">Saluda</label>
+            <label class="cty live"><input type="checkbox" name="counties" value="Spartanburg" id="c-spartanburg">Spartanburg</label>
+            <label class="cty"><input type="checkbox" name="counties" value="Sumter" id="c-sumter">Sumter</label>
+            <label class="cty"><input type="checkbox" name="counties" value="Union" id="c-union">Union</label>
+            <label class="cty"><input type="checkbox" name="counties" value="Williamsburg" id="c-williamsburg">Williamsburg</label>
+            <label class="cty live"><input type="checkbox" name="counties" value="York" id="c-york">York</label>
+          </div>
+          <label class="f" for="f-counties-other" style="margin-top:6px">Other counties or states <span class="legend-note">(optional, e.g. Indiana)</span><input id="f-counties-other" name="counties_other" type="text" placeholder="e.g. Marion County, IN"></label>
+        </fieldset>
         <label class="f" for="f-notes">Anything else?<textarea id="f-notes" name="notes"></textarea></label>
         <button class="btn btn-primary" type="submit" style="justify-self:start">Send request</button>
         <div id="status" class="form-status" role="status" hidden></div>
@@ -453,6 +523,18 @@ const CONFIG = {
 
   // Form
   const form = $("#lead"), status = $("#status");
+  // County picker
+  const ctyBoxes = [...document.querySelectorAll('input[name="counties"]')];
+  const ctyCount = document.getElementById("cty-count");
+  const upd = () => { ctyCount.textContent = ctyBoxes.filter(b=>b.checked).length + " selected"; };
+  ctyBoxes.forEach(b => b.addEventListener("change", upd));
+  document.querySelectorAll("[data-cty]").forEach(btn => btn.addEventListener("click", () => {
+    const m = btn.dataset.cty;
+    ctyBoxes.forEach(b => { b.checked = m==="all" ? true : m==="none" ? false : b.closest(".cty").classList.contains("live"); });
+    upd();
+  }));
+  form.addEventListener("reset", () => setTimeout(upd, 0));
+
   form.addEventListener("submit", async e => {
     e.preventDefault();
     const name = $("#f-name"), email = $("#f-email");
@@ -462,6 +544,9 @@ const CONFIG = {
     const data = new FormData(form);
     const interests = data.getAll("interest").join(", ");
     data.set("interest", interests);
+    const other = (data.get("counties_other")||"").trim();
+    const counties = data.getAll("counties").concat(other ? ["Other: "+other] : []).join(", ");
+    data.delete("counties"); data.delete("counties_other"); data.set("counties", counties || "—");
     data.set("_subject", "Tax sale tools request — " + name.value.trim());
     if (CONFIG.formEndpoint) {
       try {
